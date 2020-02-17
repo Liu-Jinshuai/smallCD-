@@ -223,7 +223,7 @@ Component({
         }
 
         m = (leapMonth != 0 && t == leapMonth + 1)
-          ? ('闰'.this.chineseMonth(t - 1))
+          ? ('闰'==this.chineseMonth(t - 1))
           : this.chineseMonth(((leapMonth != 0 && leapMonth + 1 < t) ? (t - 1) : t));
       }
       lunarArray.push(year, t, e); //年 月 日
@@ -240,6 +240,7 @@ Component({
     //当年当月当天 滚动到制定日期 否则滚动到当月1日
     scrollCalendar(year, month, date) {
       console.log(year, month, date)
+      var lunarday = this.getMsg(year, month, date);
       var that = this, scrollLeft = 0;
       wx.getSystemInfo({
         success(res) {
@@ -256,7 +257,8 @@ Component({
           }
 
           that.setData({
-            scrollLeft: scrollLeft
+            scrollLeft: scrollLeft,
+            thedayLunarday: lunarday[3] + "年 " + lunarday[5] + lunarday[6]
           })
         }
       })
@@ -310,17 +312,14 @@ Component({
     select: function (e) {
       let date = e.currentTarget.dataset.date,
         select = this.data.year + '-' + this.zero(this.data.month) + '-' + this.zero(date);
-      var lunarday = this.getMsg(this.data.year, this.zero(this.data.month), this.zero(date) - 1);
+
       this.setData({
         title: this.data.year + '年' + this.zero(this.data.month) + '月' + this.zero(date) + '日',
         select: select,
         year: this.data.year,
         month: this.data.month,
         date: date,
-        thedayLunarday: lunarday[3] + "年 " + lunarday[5] + lunarday[6]
       });
-
-      console.log(this.data.thedayLunarday);
 
       //滚动日历到选中日期
       this.scrollCalendar(this.data.year, this.data.month, date);
