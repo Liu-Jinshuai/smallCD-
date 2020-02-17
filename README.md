@@ -23,8 +23,6 @@
 
 ## 2.界面
 
-### 平铺展示
-![UI](https://raw.githubusercontent.com/749264345/miniapp-component-calendar/master/ui-1.png)
+### 展示
+![UI](https://raw.githubusercontent.com/17562105692/smallCD-/master/url-1.jpg)
 
-### 滚动展示
-![UI](https://raw.githubusercontent.com/749264345/miniapp-component-calendar/master/ui-2.png)
