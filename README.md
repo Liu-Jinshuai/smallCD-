@@ -24,5 +24,4 @@
 ## 2.界面
 
 ### 展示
-![UI](https://raw.githubusercontent.com/17562105692/smallCD-/master/url-1.jpg)
-
+![UI](https://img-blog.csdnimg.cn/20200217185845796.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc0MTk5,size_16,color_FFFFFF,t_70)
