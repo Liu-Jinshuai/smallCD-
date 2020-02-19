@@ -14,9 +14,25 @@
 ```
 使用
 ```javascript
-//index.js
+//index.html
 
 <calendar-week></calendar-week>
+
+```
+```javascript
+//index.js
+
+Page({
+  data: {
+    
+  },
+  solarAndLunar(e){
+    this.setData({
+      alltime:e.detail
+    })
+  }
+ 
+})
 
 ```
 
