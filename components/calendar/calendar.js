@@ -85,6 +85,7 @@ Component({
   },
   ready: function () {
     this.today();
+    
   },
 
   methods: {
@@ -260,6 +261,12 @@ Component({
             scrollLeft: scrollLeft,
             thedayLunarday: lunarday[3] + "年 " + lunarday[5] + lunarday[6]
           })
+
+          that.triggerEvent('solarAndLunar', {
+            solar: year + "年" + month + "月" + date + "日",
+            lunar: lunarday[3] + "年 " + lunarday[5] + lunarday[6]
+          })
+
         }
       })
     },
@@ -320,6 +327,8 @@ Component({
         month: this.data.month,
         date: date,
       });
+
+      
 
       //滚动日历到选中日期
       this.scrollCalendar(this.data.year, this.data.month, date);
