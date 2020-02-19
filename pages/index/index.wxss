@@ -1,0 +1,8 @@
+.time{
+  display: flex;
+}
+.time_two{
+  border: 1px solid #dddee1;
+  box-shadow: 0 0 2px #dddee1;
+  padding: 10rpx;
+}

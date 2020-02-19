@@ -1,1 +1,9 @@
-<calendar-week></calendar-week>
+<calendar-week bind:solarAndLunar="solarAndLunar"></calendar-week>
+
+<view class="time">
+    <view class="time_two" style="margin:auto">
+        <view>获取选中的值：</view>
+        <view>阳历：{{alltime.solar}}</view>
+        <view>阴历：{{alltime.lunar}}</view>
+    </view>
+</view>
