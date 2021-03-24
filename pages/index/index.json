@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "calendar-week": "../components/calendar/calendar"
+    "calendar-week": "../../components/calendar/calendar"
   }
 }
