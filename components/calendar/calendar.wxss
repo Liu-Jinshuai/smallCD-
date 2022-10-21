@@ -32,7 +32,7 @@
 }
 
 .calendar-title .title {
-    min-width: 300rpx;
+    min-width: 250rpx;
     text-align: center;
 }
 

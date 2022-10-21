@@ -59,6 +59,8 @@ Component({
         day
       })
 
+      console.log(moonday)
+
       let arr = [moonday.year,moonday.month,moonday.day,moonday.lunarYear,moonday.zodiac,moonday.monthC,moonday.dayC];
 
       return arr;

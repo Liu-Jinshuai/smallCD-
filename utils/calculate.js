@@ -195,7 +195,7 @@
 
         let ruleArr = time[theYear]
 
-        let nowDay = parseInt((new Date(`${obj.year}-${obj.month}-${obj.day}`) - new Date(`'${obj.year}-1-1'`)) / (24 * 60 * 60 * 1000)) + 1
+        let nowDay = parseInt((new Date(`${obj.year}/${obj.month}/${obj.day}`) - new Date(`${obj.year}/1/1`)) / (24 * 60 * 60 * 1000)) + 1
 
         let nowYear = ruleArr[0] > 0 ? obj.year-- : obj.year
 
