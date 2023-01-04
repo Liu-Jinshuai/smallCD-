@@ -53,13 +53,13 @@ Component({
 
     getMsg: function (year, month, day) {
 
+      if(!(year&&month&&day))return;
       let moonday = calculate({
         year,
         month,
         day
       })
-
-      console.log(moonday)
+      
 
       let arr = [moonday.year,moonday.month,moonday.day,moonday.lunarYear,moonday.zodiac,moonday.monthC,moonday.dayC];
 
@@ -70,6 +70,7 @@ Component({
     //当年当月当天 滚动到制定日期 否则滚动到当月1日
     scrollCalendar(year, month, date) {
       var lunarday = this.getMsg(year, month, date);
+      if(!lunarday)return;
       var that = this, scrollLeft = 0;
       wx.getSystemInfo({
         success(res) {
@@ -122,7 +123,7 @@ Component({
         month = DATE.getMonth() + 1,
         date = DATE.getDate(),
         select = year + '-' + this.zero(month) + '-' + this.zero(date);
-
+    
       var lunarday = this.getMsg(year, month, date);
 
       this.setData({

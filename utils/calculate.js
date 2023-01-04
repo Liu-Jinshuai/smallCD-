@@ -186,9 +186,7 @@
         }
 
         if (obj.year > MAXYEAR || obj.year < MINYEAR || obj.month > MAXMONTH || obj.month < MINMONTH || obj.day > MAXDAY || obj.day < MINDAY) {
-
             throw 'Only receive data from 2000-2100, 1-12 months, 1-31 days'
-
         }
 
         let theYear = (obj.year) % MINYEAR;
