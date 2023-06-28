@@ -1,9 +1,16 @@
+module.exports = (function() {
+var __MODS__ = {};
+var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexports: {} }; __MODS__[modId] = { status: 0, func: func, req: req, m: m }; };
+var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
+var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
+var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
+__DEFINE__(1687929622610, function(require, module, exports) {
 (function (global, calculate) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = calculate() :
         typeof define === 'function' && define.amd ? define(calculate) :
             (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.moonTime = calculate());
 })(this, (function () {
-    'use strict';
+    
 
     const MAXYEAR = 2100;
     const MINYEAR = 2000;
@@ -39,7 +46,7 @@
         [1, 10, 30, '4578', '2.-3', '2'],
         [2, 20, 29, '7-8-10-11', '34', ''],
         [1, 2, 29, '9-10', '45', '6'],
-        [1, 13, 30, '9-10', '4578', ''],
+        [2, 13, 30, '9-10', '4578', ''],
         [2, 24, 30, '1-2-10-11', '5689', ''],
         [1, 5, 29, '123', '5.-6-8-9', '5'],
         [2, 17, 30, '12', '9-10', ''],
@@ -145,7 +152,11 @@
         return res;
     }
 
-    var chineseMonth = function (num, bool) {
+    var getWhetherLeapMonth = (year, leapMonth) => {
+        return time[year][5] == leapMonth ? true : false;
+    }
+
+    var chineseMonth = function (num, leapYear) {
         var res;
         var dateHash = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
         if (num <= 10) {
@@ -153,7 +164,7 @@
         } else if (num > 10 && num < 20) {
             res = '十' + dateHash[num - 10];
         }
-        return (bool ? '闰' : '') + res + '月';
+        return (getWhetherLeapMonth(leapYear, num) ? '闰' : '') + res + '月';
     }
 
     var getConsecutiveMonths = function (msg) {
@@ -186,7 +197,9 @@
         }
 
         if (obj.year > MAXYEAR || obj.year < MINYEAR || obj.month > MAXMONTH || obj.month < MINMONTH || obj.day > MAXDAY || obj.day < MINDAY) {
+
             throw 'Only receive data from 2000-2100, 1-12 months, 1-31 days'
+
         }
 
         let theYear = (obj.year) % MINYEAR;
@@ -195,7 +208,7 @@
 
         let nowDay = parseInt((new Date(`${obj.year}/${obj.month}/${obj.day}`) - new Date(`${obj.year}/1/1`)) / (24 * 60 * 60 * 1000)) + 1
 
-        let nowYear = ruleArr[0] > 0 ? obj.year-- : obj.year
+        let leapYear = (ruleArr[0] > 0 ? obj.year-- : obj.year) % MINYEAR
 
         let month = 12 + 1 - ruleArr[0];
 
@@ -348,7 +361,7 @@
 
             return Object.assign(obj, {
 
-                month: month <= obj.leapMonth ? '闰' + obj.leapMonth : month,
+                month: month,
 
                 day: nowDay,
 
@@ -358,7 +371,7 @@
 
                 dayC: chineseNumber(nowDay),
 
-                monthC: chineseMonth(month, obj.leapMonth)
+                monthC: chineseMonth(month, leapYear)
 
             })
         } else {
@@ -378,7 +391,7 @@
 
                 dayC: chineseNumber(ruleArr[1] + nowDay - 1),
 
-                monthC: chineseMonth(month)
+                monthC: chineseMonth(month, leapYear)
 
             })
         }
@@ -387,3 +400,8 @@
     return calculate;
 
 }))
+}, function(modId) {var map = {}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1687929622610);
+})()
+//miniprogram-npm-outsideDeps=[]
+//# sourceMappingURL=index.js.map

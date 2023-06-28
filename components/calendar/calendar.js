@@ -1,4 +1,4 @@
-let calculate = require('../../utils/calculate')
+let calculate = require('moon-time')
 Component({
   //初始默认为当前日期
   properties: {
@@ -61,7 +61,7 @@ Component({
       })
       
 
-      let arr = [moonday.year,moonday.month,moonday.day,moonday.lunarYear,moonday.zodiac,moonday.monthC,moonday.dayC];
+      let arr = [moonday.year,moonday.monthC,moonday.day,moonday.lunarYear,moonday.zodiac,moonday.monthC,moonday.dayC];
 
       return arr;
     },
